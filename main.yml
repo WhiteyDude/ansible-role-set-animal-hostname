@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  vars:
+    prefix: "type"
+    fqdn: "mydomain"
+  tasks:
+    - include: tasks/main.yml

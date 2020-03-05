@@ -1,0 +1,26 @@
+  - name: Copy animals files up
+    copy: 
+      src: files/animals.txt
+      dest: /tmp/animals.txt
+      owner: root
+      group: root
+      mode: 0600
+
+  - name: Copy adjectives files up
+    copy: 
+      src: files/adjectives.txt
+      dest: /tmp/adjectives.txt
+      owner: root
+      group: root
+      mode: 0600
+
+  - name: Copy shell script up
+    copy: 
+      src: files/set-animal-hostname.sh
+      dest: /tmp/set-animal-hostname.sh
+      owner: root
+      group: root
+      mode: 'a+x'
+  - name: Run script
+    shell: /tmp/set-animal-hostname.sh {{ prefix }} {{ fqdn }}
+    register: new_hostname
